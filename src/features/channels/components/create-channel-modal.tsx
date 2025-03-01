@@ -1,7 +1,6 @@
 import {
 	Dialog,
 	DialogContent,
-	DialogDescription,
 	DialogHeader,
 	DialogTitle,
 } from "@/components/ui/dialog";
@@ -12,8 +11,11 @@ import { Button } from "@/components/ui/button";
 import React, { useState } from "react";
 import { useCreateChannel } from "../api/use-create-channel";
 import { useWorkspaceId } from "@/hooks/use-workspace-id";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 export const CreateChannelModal = () => {
+	const router = useRouter();
 	const workspaceId = useWorkspaceId();
 	const [open, setOpen] = useCreateChannelModal();
 	const { mutate, isPending } = useCreateChannel();
@@ -27,13 +29,17 @@ export const CreateChannelModal = () => {
 		setOpen(false);
 	};
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault;
+		e.preventDefault();
 		mutate(
 			{ name, workspaceId },
 			{
 				onSuccess: (id) => {
-					// TODO: Redirect to new channel
+					toast.success("Channel created");
+					router.push(`/workspace/${workspaceId}/channel/${id}`);
 					handleClose();
+				},
+				onError: () => {
+					toast.error("Failed to create channel. Not an admin.");
 				},
 			}
 		);
@@ -41,7 +47,7 @@ export const CreateChannelModal = () => {
 
 	return (
 		<Dialog open={open} onOpenChange={handleClose}>
-			<DialogContent>
+			<DialogContent aria-describedby={undefined}>
 				<DialogHeader>
 					<DialogTitle>Add a channel</DialogTitle>
 				</DialogHeader>
@@ -56,10 +62,10 @@ export const CreateChannelModal = () => {
 						maxLength={80}
 						placeholder="e.g. plan-budget"
 					/>
+					<div className="flex justify-end">
+						<Button disabled={isPending}>Create</Button>
+					</div>
 				</form>
-				<div className="flex justify-end">
-					<Button disabled={false}>Create</Button>
-				</div>
 			</DialogContent>
 		</Dialog>
 	);
