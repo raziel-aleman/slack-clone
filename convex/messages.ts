@@ -124,6 +124,21 @@ export const remove = mutation({
 
 		await ctx.db.delete(args.id);
 
+		if (message.image) {
+			await ctx.storage.delete(message.image);
+		}
+
+		const reactions = await ctx.db
+			.query("reactions")
+			.filter((q) => q.eq(q.field("messageId"), args.id))
+			.collect();
+
+		await Promise.all(
+			reactions.map(async (reaction) => {
+				await ctx.db.delete(reaction._id);
+			})
+		);
+
 		return args.id;
 	},
 });
