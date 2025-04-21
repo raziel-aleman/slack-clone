@@ -15,6 +15,7 @@ import { Info, Search } from "lucide-react";
 import { useState } from "react";
 import { useGetMembers } from "@/features/members/api/use-get-members";
 import { useRouter } from "next/navigation";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 export const Toolbar = () => {
 	const workspaceId = useWorkspaceId();
@@ -41,7 +42,7 @@ export const Toolbar = () => {
 				<Button
 					onClick={() => setOpen(true)}
 					size="sm"
-					className="bg-accent/25 hover:bg-accent-25 w-full justify-start h-7 px-2"
+					className="bg-accent/25 dark:bg-[#532754] hover:bg-accent/30 dark:hover:bg-[#5d2c5e] w-full justify-start h-7 px-2"
 				>
 					<Search className="size-4 text-white mr-2" />
 					<span className="text-white text-xs">
@@ -77,9 +78,10 @@ export const Toolbar = () => {
 				</CommandList>
 			</CommandDialog>
 			<div className="ml-auto flex-1 flex items-center justify-end">
-				<Button variant="transparent" size="iconSm">
+				{/* <Button variant="transparent" size="iconSm">
 					<Info className="size-5 text-white" />
-				</Button>
+				</Button> */}
+				<ThemeToggle />
 			</div>
 		</nav>
 	);

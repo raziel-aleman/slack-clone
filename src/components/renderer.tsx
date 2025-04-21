@@ -1,6 +1,6 @@
+import { useTheme } from "next-themes";
 import Quill from "quill";
 import { useEffect, useRef, useState } from "react";
-import { current } from "../../convex/members";
 
 interface RendererProps {
 	value: string;
@@ -9,6 +9,7 @@ interface RendererProps {
 const Renderer = ({ value }: RendererProps) => {
 	const [isEmpty, setIsEmpty] = useState(false);
 	const rendererRef = useRef<HTMLDivElement>(null);
+	const {theme} = useTheme();
 
 	useEffect(() => {
 		if (!rendererRef.current) return;
@@ -42,7 +43,7 @@ const Renderer = ({ value }: RendererProps) => {
 
 	if (isEmpty) return null;
 
-	return <div ref={rendererRef} className="ql-editor ql-renderer"></div>;
+	return <div ref={rendererRef} className={theme === "light" ? "ql-editor ql-renderer" : "ql-editor-dark ql-renderer"}></div>;
 };
 
 export default Renderer;

@@ -61,13 +61,13 @@ export const MessageList = ({
 	);
 
 	return (
-		<div className="flex-1 flex flex-col-reverse pb-4 overflow-y-auto messages-scrollbar">
+		<div className="dark:bg-[#1A1D21] flex-1 flex flex-col-reverse pb-4 overflow-y-auto messages-scrollbar dark:messages-scrollbar">
 			{Object.entries(groupedMessages || {}).map(
 				([dateKey, messages]) => (
 					<div key={dateKey}>
 						<div className="text-center my-2 relative">
 							<hr className="absolute top-1/2 left-0 right-0 border-t border-gray-300" />
-							<span className="relative inline-block bg-white px-4 py-1 rounded-full text-xs border border-gray-300 shadow-sm">
+							<span className="relative inline-block bg-white px-4 py-1 rounded-full text-xs dark:text-black border border-gray-300 shadow-sm">
 								{formatDateLabel(dateKey)}
 							</span>
 						</div>

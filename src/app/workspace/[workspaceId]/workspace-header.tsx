@@ -39,11 +39,11 @@ export const WorkspaceHeader = ({
 				initialVaue={workspace.name}
 			/>
 			<div className="flex items-center justify-between px-4 h-[49px] gap-0.5">
-				<DropdownMenu>
+				<DropdownMenu modal={false}>
 					<DropdownMenuTrigger asChild>
 						<Button
 							variant="transparent"
-							className="font-semibold text-lg w-auto p-1.5 overflow-hidden"
+							className="dark:text-white dark:hover:bg-accent/30 font-semibold text-lg w-auto p-1.5 overflow-hidden"
 							size="sm"
 						>
 							<span className="truncate">{workspace.name}</span>
@@ -88,12 +88,12 @@ export const WorkspaceHeader = ({
 				</DropdownMenu>
 				<div className="flex items-center gap-0.5">
 					<Hint label="Filter conversations" side="bottom">
-						<Button variant="transparent" size="iconSm">
+						<Button className="text-white dark:text-white dark:hover:bg-accent/30" variant="transparent" size="iconSm">
 							<ListFilter className="size-4" />
 						</Button>
 					</Hint>
 					<Hint label="New message" side="bottom">
-						<Button variant="transparent" size="iconSm">
+						<Button className="text-white dark:text-white dark:hover:bg-accent/30" variant="transparent" size="iconSm">
 							<SquarePen className="size-4" />
 						</Button>
 					</Hint>

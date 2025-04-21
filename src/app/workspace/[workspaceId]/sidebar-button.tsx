@@ -19,13 +19,13 @@ export const SidebarButton = ({
 			<Button
 				variant="transparent"
 				className={cn(
-					"size-9 p-2 group-hover:bg-accent/20",
-					isActive && "bg-accent/20"
+					"size-9 p-2 group-hover:bg-accent/20 dark:group-hover:bg-accent/50",
+					isActive && "bg-accent/20 dark:bg-accent/50"
 				)}
 			>
-				<Icon className="size-5 text-white group-hover:scale-110 transition-all" />
+				<Icon className="size-5 text-white dark:text-white group-hover:scale-110 transition-all" />
 			</Button>
-			<span className="text-[11px] text-white group-hover:text-accent">
+			<span className="text-[11px] text-white dark:text-white group-hover:text-white">
 				{label}
 			</span>
 		</div>

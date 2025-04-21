@@ -7,6 +7,7 @@ import {
 	DialogTitle,
 	DialogFooter,
 } from "@/components/ui/dialog";
+import { X } from "lucide-react";
 import { useState } from "react";
 
 export const useConfirm = (
@@ -38,7 +39,15 @@ export const useConfirm = (
 
 	const ConfirmDialog = () => (
 		<Dialog open={promise !== null}>
-			<DialogContent>
+			<DialogContent hideClose>
+				<div className="fixed top-4 right-4">
+					<button
+						type="button"
+						className="rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
+					>
+						<X size={16} onClick={handleCancel} />
+					</button>
+				</div>
 				<DialogHeader>
 					<DialogTitle>{title}</DialogTitle>
 					<DialogDescription>{message}</DialogDescription>

@@ -10,8 +10,10 @@ import {
 import { useCurrentUser } from "../api/use-current-user";
 import { Loader, LogOut } from "lucide-react";
 import { useAuthActions } from "@convex-dev/auth/react";
+import { useRouter } from "next/navigation";
 
 export const UserButton = () => {
+	const router = useRouter();
 	const { signOut } = useAuthActions();
 	const { data, isLoading } = useCurrentUser();
 
@@ -48,7 +50,12 @@ export const UserButton = () => {
 					className="w-60"
 				>
 					<DropdownMenuItem
-						onClick={() => signOut()}
+						onClick={async (e) => {
+							e.preventDefault();
+							await signOut();
+							// router.push("/auth");
+							location.reload();
+						}}
 						className="h-10"
 					>
 						<LogOut className="size-4 mr-2" />

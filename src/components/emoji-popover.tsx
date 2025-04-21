@@ -10,7 +10,8 @@ import {
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
 import React, { useState } from "react";
-import EmojiPicker, { type EmojiClickData } from "emoji-picker-react";
+import EmojiPicker, { Theme, type EmojiClickData } from "emoji-picker-react";
+import { useTheme } from "next-themes";
 
 interface EmojiPopoverProps {
 	children: React.ReactNode;
@@ -25,6 +26,7 @@ export const EmojiPopover = ({
 }: EmojiPopoverProps) => {
 	const [popoverOpen, setPopoverOpen] = useState(false);
 	const [tooltipOpen, setTooltipOpen] = useState(false);
+	const { theme } = useTheme();
 
 	const onSelect = (value: EmojiClickData) => {
 		onEmojiSelect(value.emoji);
@@ -51,7 +53,10 @@ export const EmojiPopover = ({
 					</TooltipContent>
 				</Tooltip>
 				<PopoverContent className="p-0 w-full border-none shadow-none rounded-xl">
-					<EmojiPicker onEmojiClick={onSelect} />
+					<EmojiPicker
+						onEmojiClick={onSelect}
+						theme={theme === "light" ? Theme.LIGHT : Theme.DARK}
+					/>
 				</PopoverContent>
 			</Popover>
 		</TooltipProvider>

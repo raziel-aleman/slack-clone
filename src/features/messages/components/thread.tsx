@@ -127,13 +127,7 @@ export const Thread = ({ messageId, onClose }: ThreadProps) => {
 
 	if (loadingMessage || status === "LoadingFirstPage") {
 		return (
-			<div className="h-full flex flex-col">
-				<div className="h-[49px] flex justify-between items-center px-4 border-b">
-					<p className="text-lg font-bold">Thread</p>
-					<Button onClick={onClose} size="iconSm" variant="ghost">
-						<XIcon className="size-5 stroke-[1.5]" />
-					</Button>
-				</div>
+			<div className="bg-white dark:bg-[#1A1D21] h-full flex flex-col">
 				<div className="flex flex-col gap-y-2 h-full items-center justify-center">
 					<Loader className="size-5 animate-spin text-muted-foreground" />
 				</div>
@@ -143,8 +137,8 @@ export const Thread = ({ messageId, onClose }: ThreadProps) => {
 
 	if (!message) {
 		return (
-			<div className="h-full flex flex-col">
-				<div className="h-[49px] flex justify-between items-center px-4 border-b">
+			<div className="bg-white dark:bg-[#1A1D21] h-full flex flex-col">
+				<div className="bg-white dark:bg-[#1A1D21]h-[49px] flex justify-between items-center px-4 border-b">
 					<p className="text-lg font-bold">Thread</p>
 					<Button onClick={onClose} size="iconSm" variant="ghost">
 						<XIcon className="size-5 stroke-[1.5]" />
@@ -162,19 +156,19 @@ export const Thread = ({ messageId, onClose }: ThreadProps) => {
 
 	return (
 		<div className="h-full flex flex-col">
-			<div className="h-[49px] flex justify-between items-center px-4 border-b">
+			<div className="bg-white dark:bg-[#1A1D21] h-[49px] flex justify-between items-center px-4 border-b">
 				<p className="text-lg font-bold">Thread</p>
 				<Button onClick={onClose} size="iconSm" variant="ghost">
 					<XIcon className="size-5 stroke-[1.5]" />
 				</Button>
 			</div>
-			<div className="flex-1 flex flex-col-reverse pb-4 overflow-y-auto messages-scrollbar">
+			<div className="dark:bg-[#1A1D21] flex-1 flex flex-col-reverse pb-4 overflow-y-auto messages-scrollbar dark:messages-scrollbar">
 				{Object.entries(groupedMessages || {}).map(
 					([dateKey, messages]) => (
 						<div key={dateKey}>
 							<div className="text-center my-2 relative">
 								<hr className="absolute top-1/2 left-0 right-0 border-t border-gray-300" />
-								<span className="relative inline-block bg-white px-4 py-1 rounded-full text-xs border border-gray-300 shadow-sm">
+								<span className="relative inline-block bg-white px-4 py-1 rounded-full text-xs dark:text-black border border-gray-300 shadow-sm">
 									{formatDateLabel(dateKey)}
 								</span>
 							</div>
@@ -263,7 +257,7 @@ export const Thread = ({ messageId, onClose }: ThreadProps) => {
 					setEditingId={setEditingId}
 				/>
 			</div>
-			<div className="px-4">
+			<div className="px-4 bg-white dark:bg-[#1A1D21]">
 				<Editor
 					key={editorKey}
 					onSubmit={handleSubmit}

@@ -138,10 +138,10 @@ export const Message = ({
 				<ConfirmDialog />
 				<div
 					className={cn(
-						"flex flex-col gap-2 p-1.5 px-5 hover:bg-gray-100/60 group relative",
-						isEditing && "bg-[#f2c74433] hover:bg-[#f2c74433]",
+						"flex flex-col gap-2 p-1.5 px-5 hover:bg-gray-100/60 dark:hover:bg-accent/40 group relative",
+						isEditing && "bg-[#f2c74433] hover:bg-[#f2c74433] dark:hover:bg-[#f2c74433]",
 						isRemovingMessage &&
-							"bg-rose-500/50 transform transition-all scale-y-0 origin-bottom duration-200"
+							"bg-rose-500/50 dark:bg-rose-500/50 transform transition-all scale-y-0 origin-bottom duration-200"
 					)}
 				>
 					<div className="flex items-start gap-2">
@@ -205,10 +205,10 @@ export const Message = ({
 			<ConfirmDialog />
 			<div
 				className={cn(
-					"flex flex-col gap-2 p-1.5 px-5 hover:bg-gray-100/60 group relative",
-					isEditing && "bg-[#f2c74433] hover:bg-[#f2c74433]",
+					"flex flex-col gap-2 p-1.5 px-5 hover:bg-gray-100/60 dark:hover:bg-accent/40 group relative",
+					isEditing && "bg-[#f2c74433] hover:bg-[#f2c74433] dark:hover:bg-[#f2c74433]",
 					isRemovingMessage &&
-						"bg-rose-500/50 transform transition-all scale-y-0 origin-bottom duration-200"
+						"bg-rose-500/50 dark:bg-rose-500/50 transform transition-all scale-y-0 origin-bottom duration-200"
 				)}
 			>
 				<div className="flex items-start gap-2">

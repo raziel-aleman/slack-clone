@@ -89,14 +89,14 @@ export const PreferencesModal = ({
 		<>
 			<ConfirmDialog />
 			<Dialog open={open} onOpenChange={setOpen}>
-				<DialogContent className="p-0 bg-gray-50 overflow-hidden">
-					<DialogHeader className="p-4 border-b bg-white">
+				<DialogContent className="p-0 bg-gray-50 dark:bg-[#1A1D21] overflow-hidden">
+					<DialogHeader className="p-4 border-b bg-white dark:bg-[#1A1D21]">
 						<DialogTitle className="">{value}</DialogTitle>
 					</DialogHeader>
 					<div className="px-4 pb-4 flex flex-col gap-y-2">
 						<Dialog open={editOpen} onOpenChange={setEditOpen}>
 							<DialogTrigger asChild>
-								<div className="px-5 py-4 bf-white rounded-lg border cursor-pointer hover:bg-gray-50">
+								<div className="px-5 py-4 bg-white dark:bg-[#1A1D21] rounded-lg border cursor-pointer hover:bg-gray-50 dark:hover:bg-accent">
 									<div className="flex items-center justify-between">
 										<p className="text-sm font-semibold">
 											Workspace name
@@ -149,7 +149,7 @@ export const PreferencesModal = ({
 						<button
 							disabled={isRemovingWorkspace}
 							onClick={handleRemove}
-							className="flex items-center gap-x-2 px-5 py-4 bg-white rounded-lg border cursor-pointer hover:bg-gray-50 text-rose-600"
+							className="flex items-center gap-x-2 px-5 py-4 bg-white dark:bg-[#1A1D21] rounded-lg border cursor-pointer hover:bg-gray-50 dark:hover:bg-accent text-rose-600"
 						>
 							<TrashIcon className="size-4" />
 							<p className="text-sm font-semibold">

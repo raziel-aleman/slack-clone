@@ -51,8 +51,8 @@ const JoinPage = () => {
 	}
 
 	return (
-		<div className="h-full flex flex-col gap-y-8 items-center justify-center bg-white p-8 rounded-lg shadow-md">
-			<Image src="/vercel.svg" width={60} height={60} alt="Logo" />
+		<div className="h-full flex flex-col gap-y-8 items-center justify-center bg-white dark:bg-[#1A1D21] p-8 rounded-lg shadow-md">
+			{/* <Image src="/vercel.svg" width={60} height={60} alt="Logo" /> */}
 			<div className="flex flex-col gap-y-4 items-center justify-center max-w-md">
 				<div className="flex flex-col gap-y-2 items-center jsutify-center">
 					<h1 className="text-2xl font-bold">Join {data?.name}</h1>

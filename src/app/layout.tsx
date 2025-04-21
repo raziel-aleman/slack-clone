@@ -8,6 +8,7 @@ import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { Modals } from "@/components/modals";
 import { Provider } from "jotai";
 import { Toaster } from "sonner";
+import { ThemeProvider } from "@/components/ui/theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,15 +24,22 @@ export default function RootLayout({
 }>) {
 	return (
 		<ConvexAuthNextjsServerProvider>
-			<html lang="en">
+			<html lang="en" suppressHydrationWarning>
 				<body className={inter.className}>
-					<ConvexClientProvider>
-						<Provider>
-							<Toaster />
-							<Modals />
-							<NuqsAdapter>{children}</NuqsAdapter>
-						</Provider>
-					</ConvexClientProvider>
+					<ThemeProvider
+						attribute="class"
+						defaultTheme="system"
+						enableSystem
+						disableTransitionOnChange
+					>
+						<ConvexClientProvider>
+							<Provider>
+								<Toaster />
+								<Modals />
+								<NuqsAdapter>{children}</NuqsAdapter>
+							</Provider>
+						</ConvexClientProvider>
+					</ThemeProvider>
 				</body>
 			</html>
 		</ConvexAuthNextjsServerProvider>
